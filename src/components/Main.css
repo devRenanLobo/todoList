@@ -1,0 +1,16 @@
+div{
+    font-family: 'Open Sans';
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vh;
+    height: 80vh;
+}
+
+span{
+    color: var(--font-color);
+    font-size: 150px;
+    font-weight: 700;
+    text-shadow: 14px 14px 20px rgb(20, 20, 20);
+}
+

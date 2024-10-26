@@ -7,6 +7,18 @@
   box-sizing: border-box;
 }
 
+:root{
+  --primary-color: #062e3f;
+  --secondary-color: #343229;
+  --font-color: #ffe8c5;
+}
+
 body{
   font-family: "Open Sans";
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: linear-gradient(100deg, var(--secondary-color), var(--primary-color));
 }

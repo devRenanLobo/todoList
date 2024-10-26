@@ -1,0 +1,40 @@
+.form{
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3vh;
+    width: 70%;
+}
+
+.form input[type="text"]{
+    height: 40px;
+    padding: 0 15px;
+    font-size: 20px;
+    border: 2px solid #13140f;
+    border-radius: 15px 0px 0px 15px;
+    min-width: 70%;
+    background-color: #111f26;
+    color: var(--font-color);
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.5);
+    font-family: "Open Sans";
+}
+
+.form button[type="submit"]{
+    border-radius: 0px 15px 15px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 50px;
+    font-size: 33px;
+    cursor: pointer;
+    color: var(--font-color);
+    background: #00988d;
+}
+
+.form button[type="submit"]:hover{
+    color: #111f26;
+    transition: 400ms;
+}
+
