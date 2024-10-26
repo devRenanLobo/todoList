@@ -6,9 +6,8 @@ import './Form.css';
 
 export default function Form({addTask}){
 
-    const [task, setTask] = useState([]);
+    const [task, setTask] = useState('');
 
-    
     const handleSubmit = (e) => {
         e.preventDefault()
             addTask(task);
@@ -19,7 +18,7 @@ export default function Form({addTask}){
         <form onSubmit={handleSubmit} className='form' >
             <label htmlFor='task'></label>
             <input id='task' 
-                task='task' 
+                value={task}
                 type="text" 
                 placeholder='Add a task'
                 onChange={(e) => setTask(e.target.value)}></input>
