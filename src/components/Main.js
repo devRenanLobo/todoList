@@ -16,7 +16,7 @@ export default function Main(){
                 text: newTask,
                 date: currentDate,
             };
-            setTasks([...tasks, newTaskObj]);
+            setTasks([newTaskObj, ...tasks,]);
         }
     }
 
