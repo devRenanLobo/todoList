@@ -15,7 +15,6 @@ server.get('/', (require, response) => {
 });
 
 server.get('/todoList', async (require, response) => {
-    //GET all todos
     try{
     const todoList = db('todoList');
     response.json(todoList);
@@ -24,12 +23,30 @@ server.get('/todoList', async (require, response) => {
     }
 });
 
-server.post('/todoList:id', (require, response) => {
-    //POST a todos
+server.post('/todoList:id', async (require, response) => {
+    const {message} = require.body
+    if (!message){
+        return response.status(400).json({
+            message: 'Você deveria colocar um Todo no seu request'
+        })
+    }
+
+    try {
+        await db('todoList').insert({message})
+        response.json({message: 'TodoList successfully stored'})
+    }catch(err) {
+        console.log(err);
+    }
 });
 
-server.delete('/todoList:id', (require, repsonse) => {
-    //DELETE a todo
+server.delete('/todoList:id', async (require, repsonse) => {
+    const {id} = require.params;
+    try {
+        await db('tododList').where({id}).del();
+        repsonse.status(200).json({message: 'Deletado com sucesso'})
+    } catch (err) {
+        console.log(err)
+    }
 });
 
 module.exports = server;
