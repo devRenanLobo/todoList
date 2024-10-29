@@ -1,7 +1,8 @@
 exports.up = async knex => {
   await knex.schema.createTable('todoList', tbl => {
     tbl.increments();
-    tbl.text('message', 256).notNullable();
+    tbl.text('message', 30).notNullable();
+    tbl.text('data').notNullable();
   })
 };
 

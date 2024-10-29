@@ -17,15 +17,16 @@ server.get('/', (require, response) => {
 server.get('/todoList', async (require, response) => {
     try{
     const todoList = await db('todoList');
-    console.log(todoList);
     response.json(todoList);
     }catch(err){
         console.log(err);
     }
 });
 
-server.post('/todoList:id', async (require, response) => {
-    const {message} = require.body
+server.post('/todoList', async (require, response) => {
+    const {message} = require.body;
+    const currentDate = new Date().toISOString();
+
     if (!message){
         return response.status(400).json({
             message: 'Você deveria colocar um Todo no seu request'
@@ -33,7 +34,7 @@ server.post('/todoList:id', async (require, response) => {
     }
 
     try {
-        await db('todoList').insert({message})
+        await db('todoList').insert({message, data: currentDate});
         response.json({message: 'TodoList successfully stored'})
     }catch(err) {
         console.log(err);

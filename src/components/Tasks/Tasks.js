@@ -19,7 +19,7 @@ export default function Tasks({tasks, deleteTask}){
                 {tasks.map((task, index) =>(
                     <li key={index}>
                     <div className='infos'>
-                    <span className='tasksName'>{task.text}</span>
+                    <span className='tasksName'>{task.message}</span>
                     <span className='taksDate'>{task.date}</span>
                     </div>
                         <MdDeleteForever className='delete'

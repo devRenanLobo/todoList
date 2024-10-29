@@ -13,21 +13,32 @@ export default function Main(){
     useEffect(() => {
         axios.get('http://localhost:8888/todoList', {})
         .then(response => {
-            console.log(response);
+            const formattedTasks = response.data.map(task => ({
+                message: task.message,
+                date: new Date().toLocaleDateString()
+            }))
+            setTasks(formattedTasks);
         })
         .catch(err => {
             console.log(err);
         })
     }, [])
 
-    const addTask = (newTask) => {
+    const addTask = async (newTask) => {
         if(newTask.trim() !==''){
             const currentDate = new Date().toLocaleDateString();
             const newTaskObj = {
-                text: newTask,
+                message: newTask,
                 date: currentDate,
             };
-            setTasks([newTaskObj, ...tasks,]);
+
+            try {
+                const response = await axios.post('http://localhost:8888/todoList', newTaskObj)
+                console.log(response);
+                setTasks(prevTasks => [newTaskObj, ...prevTasks])
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 
