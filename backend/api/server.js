@@ -17,6 +17,7 @@ server.get('/', (require, response) => {
 server.get('/todoList', async (require, response) => {
     try{
     const todoList = await db('todoList');
+    console.log(todoList);
     response.json(todoList);
     }catch(err){
         console.log(err);
