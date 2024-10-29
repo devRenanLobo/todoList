@@ -4,7 +4,7 @@
  */
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
-  await knex('todoList').truncate()
+  await knex('todoList').truncate();
   await knex('todoList').insert([
     {
       message: "Passear com o cachorro"

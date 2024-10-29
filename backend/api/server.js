@@ -16,7 +16,7 @@ server.get('/', (require, response) => {
 
 server.get('/todoList', async (require, response) => {
     try{
-    const todoList = db('todoList');
+    const todoList = await db('todoList');
     response.json(todoList);
     }catch(err){
         console.log(err);
@@ -39,11 +39,11 @@ server.post('/todoList:id', async (require, response) => {
     }
 });
 
-server.delete('/todoList:id', async (require, repsonse) => {
+server.delete('/todoList:id', async (require, response) => {
     const {id} = require.params;
     try {
         await db('tododList').where({id}).del();
-        repsonse.status(200).json({message: 'Deletado com sucesso'})
+        response.status(200).json({message: 'Deletado com sucesso'})
     } catch (err) {
         console.log(err)
     }

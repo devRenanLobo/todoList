@@ -1,8 +1,4 @@
-// Update with your config settings.
 
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
 module.exports = {
 
   development: {
@@ -14,7 +10,7 @@ module.exports = {
       directory: './api/migrations'
     },
     seeds: {
-      directory: '.api/seeds'
+      directory: './api/seeds'
     },
     useNullAsDefault: true,
   }
