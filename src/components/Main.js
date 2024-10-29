@@ -42,9 +42,8 @@ export default function Main(){
         }
     }
 
-    const deleteTask = (index) => {
-        const newTasks = tasks.filter((task, taskIndex) => taskIndex !== index);
-        setTasks(newTasks);
+    const deleteTask = id => {     
+        axios.delete(`http://localhost:8888/todoList/${id}`)
     }
 
     return (

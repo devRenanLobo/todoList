@@ -41,10 +41,10 @@ server.post('/todoList', async (require, response) => {
     }
 });
 
-server.delete('/todoList:id', async (require, response) => {
+server.delete('/todoList/:id', async (require, response) => {
     const {id} = require.params;
     try {
-        await db('tododList').where({id}).del();
+        await db('todoList').where({id}).del();
         response.status(200).json({message: 'Deletado com sucesso'})
     } catch (err) {
         console.log(err)
