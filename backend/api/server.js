@@ -41,14 +41,30 @@ server.post('/todoList', async (require, response) => {
     }
 });
 
-server.delete('/todoList/:id', async (require, response) => {
-    const {id} = require.params;
+// server.delete('/todoList/:id', async (require, response) => {
+//     const {id} = require.params;
+//     try {
+//         await db('todoList').where({id}).del();
+//         response.status(200).json({message: 'Deletado com sucesso'})
+//     } catch (err) {
+//         console.log(err)
+//     }
+// });
+
+server.delete('/todoList/:id', async (req, res) => {
+    const { id } = req.params;
     try {
-        await db('todoList').where({id}).del();
-        response.status(200).json({message: 'Deletado com sucesso'})
+        const deleted = await db('todoList').where({ id }).del();
+        
+        if (deleted) {
+            res.status(200).json({ message: 'Deletado com sucesso' });
+        } else {
+            res.status(404).json({ message: 'Tarefa não encontrada' });
+        }
     } catch (err) {
-        console.log(err)
+        console.log(err);
+        res.status(500).json({ message: 'Erro ao deletar a tarefa' });
     }
-});
+})
 
 module.exports = server;

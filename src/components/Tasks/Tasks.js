@@ -23,7 +23,7 @@ export default function Tasks({tasks, deleteTask}){
                     <span className='taksDate'>{task.date}</span>
                     </div>
                         <MdDeleteForever className='delete'
-                        onClick={() => deleteTask(index)}/>
+                        onClick={() => deleteTask(task.id)}/>
                     </li>
                 ))}
             </ul>

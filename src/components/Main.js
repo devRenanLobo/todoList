@@ -42,9 +42,29 @@ export default function Main(){
         }
     }
 
-    const deleteTask = id => {     
-        axios.delete(`http://localhost:8888/todoList/${id}`)
-    }
+    // const deleteTask = id => {     
+    //     axios.delete(`http://localhost:8888/todoList/${id}`)
+        
+    // }
+
+    // const deleteTask = (index) => {
+    //     const newTasks = tasks.filter((task, taskIndex) => taskIndex !== index);
+    //     setTasks(newTasks);
+    // }
+
+    const deleteTask = async (taskId) => {
+        try {
+            const response = await axios.delete(`http://localhost:8888/todoList/${taskId}`);
+            console.log("Resposta do servidor ao deletar:", response.data);
+            
+            if (response.status === 200) {
+                setTasks(tasks.filter(task => task.id !== taskId));
+            }
+        } catch (error) {
+            console.error("Erro ao deletar a tarefa:", error);
+        }
+    };
+    
 
     return (
         <div className='mainDiv'>
